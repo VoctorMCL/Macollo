@@ -10,6 +10,8 @@ export const GET: APIRoute = async () => {
     configured: Boolean(databaseUrl),
     host: null as string | null,
     name: null as string | null,
+    parsedOk: false,
+    redacted: databaseUrl ? databaseUrl.replace(/\/\/[^@/]+@/, "//***@") : null,
   };
 
   if (databaseUrl) {
@@ -17,8 +19,9 @@ export const GET: APIRoute = async () => {
       const parsed = new URL(databaseUrl);
       db.host = parsed.host;
       db.name = parsed.pathname.replace(/^\//, "");
+      db.parsedOk = Boolean(parsed.host);
     } catch {
-      // URL inválida: se reporta como no configurada más abajo.
+      // URL inválida: se reporta en parsedOk / error.
     }
   }
 
