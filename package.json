@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:lan": "bash scripts/run-lan.sh",
+    "db:setup": "node scripts/setup-neon.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
