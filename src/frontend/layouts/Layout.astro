@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SileoProvider from "../components/SileoProvider.tsx";
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -63,6 +64,7 @@ import SileoProvider from "../components/SileoProvider.tsx";
   <body>
     <slot />
     <SileoProvider client:load />
+    <SpeedInsights />
     <script>
       import {
         applyTempUnitToDocument,

@@ -1,6 +1,11 @@
 import { defineMiddleware } from "astro:middleware";
 import { getSession } from "auth-astro/server";
+import { registerOTel } from "@vercel/otel";
 import { rateLimit, clientIp } from "./backend/services/rateLimit";
+
+registerOTel({
+  serviceName: process.env.VERCEL_PROJECT_NAME || "macollo",
+});
 
 /**
  * Rutas de páginas que exigen sesión activa.
